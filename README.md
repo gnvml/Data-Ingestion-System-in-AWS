@@ -3,6 +3,7 @@
 This repo contains an example Docker container that transfers data from S3 file(s) into a RDS PostgreSQL table by using Pandas and S3FS.
 
 The goal of this example is to build a PoC for a data ingestion system to make incoming CSV data easy to use / query by our Data Scientists
+# Part 1 - Data Ingestion
 
 ### In a nutshell, we will:
 
@@ -150,3 +151,18 @@ Inside .github/workflows/aws.yml there are seven steps:
 * Download existing task definition from ECS
 * Fill in the new image ID in the Amazon ECS task definition
 * Register new task definition revision on ECS
+
+# Part 2 - Understanding the Data
+[This notebook](ETL_US_Credit.ipynb) implemented ETL process for the dataset from the [Give Me Some Credit](https://www.kaggle.com/c/GiveMeSomeCredit/overview) Kaggle competition. The data contains loan applicant information collected by a US credit bureau. Each row represents a single loan application and the information gathered on the applicant at the time of the application.
+
+* [data_dictionary.md](data/data_dictionary.md) - A variable dictionary is provided with definitions for each variable.
+* [sample_data.csv](data/sample_data.csv) - The dataset is provided to you in the form of a CSV file which can be found in this repository.
+
+### Visualize the distribution of each feature in dataframe
+![Alt text](img/distribution.png "Distribution")
+### Visualize the correlation between all features
+
+![Alt text](img/correlation.png "Correlation")
+
+### Let's plot the correlation
+![Alt text](img/pair_correlation.png "Pair correlation")
