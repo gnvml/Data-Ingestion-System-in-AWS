@@ -98,7 +98,7 @@ As you can see in the python script there are 8 different parameters which comes
 
 Test local:
 ```
-docker run --rm --env-file ./.env gnvml/s3-to-rds-postgresql-pandas
+docker run --rm --env-file ./.env  -v$PWD:/app gnvml/s3-to-rds-postgresql-pandas
 ```
 
 ### Run Container-Task on AWS ECS
@@ -166,3 +166,12 @@ Inside .github/workflows/aws.yml there are seven steps:
 
 ### Let's plot the correlation
 ![Alt text](img/pair_correlation.png "Pair correlation")
+
+### Install Postgresql
+
+https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
+
+
+### Install docker
+
+https://docs.docker.com/engine/install/ubuntu/

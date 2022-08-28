@@ -13,22 +13,22 @@ def lambda_handler(event, context):
     try:
         print("Uploaded file path: " + key)
         response = ecs.run_task(
-        cluster='airbnb-ecs-cluster',
+        cluster='paidy-cluster',
         launchType = 'FARGATE',
-        taskDefinition='s3-to-rds-postgresql-pandas-td:3',
+        taskDefinition='paidy-task-def:1',
         count = 1,
         platformVersion='LATEST',
         networkConfiguration={
             'awsvpcConfiguration': {
-                'subnets': [{{your_subnets}}],
-                'securityGroups': [{{your_security_groups}}],
+                'subnets': ["subnet-0ec6a6b671f7099cc", "subnet-08da40cc786f105e2"],
+                'securityGroups': ["sg-0343195d1821d1833"],
                 'assignPublicIp': 'ENABLED'
             }
         },
         overrides={
                 'containerOverrides': [
                     {
-                        'name': 's3-to-rds-postgresql-pandas',
+                        'name': 'paidy-container',
                         'environment': [
                             {
                                 'name': 'S3_URI',
@@ -36,7 +36,9 @@ def lambda_handler(event, context):
                             },
                         ]
                     }
-                ]
+                ],
+                'executionRoleArn': 'arn:aws:iam::456668253361:role/ecsTaskExecutionRole',
+                'taskRoleArn': 'arn:aws:iam::456668253361:role/ecsTaskExecutionRole'
             }
         )
         return str(response)
