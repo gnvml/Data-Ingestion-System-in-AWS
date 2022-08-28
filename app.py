@@ -26,7 +26,7 @@ def s3_to_df():
         s3_uri,
         storage_options=aws_credentials
     )
-    data_df.columns = data_df.columns.str.lower().replace('-','_')
+    data_df.columns = data_df.columns.str.lower().str.replace('-','_')
     return data_df
 
 
