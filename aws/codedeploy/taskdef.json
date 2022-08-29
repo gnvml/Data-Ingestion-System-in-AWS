@@ -26,6 +26,12 @@
                 "value": "gnvml"
             }
         ],
+        "environmentFiles": [
+            {
+                "value": "arn:aws:s3:::gnvml-us-credit/environment/.env",
+                "type": "s3"
+            }
+        ],
         "mountPoints": [],
         "volumesFrom": [],
         "logConfiguration": {
